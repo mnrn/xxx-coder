@@ -34,7 +34,7 @@ int main() {
   FOR(i, N, M) {
     set<int> U;
     auto t = i;
-    while (t) {
+    while (t != 0) {
       U.emplace(t % 10);
       t = t / 10;
     }

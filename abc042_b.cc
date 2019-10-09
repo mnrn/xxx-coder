@@ -23,15 +23,15 @@ using namespace std;
 int main() {
   int N, L;
   cin >> N >> L;
-  priority_queue<string, vector<string>, greater<string>> strque;
+  priority_queue<string, vector<string>, greater<string>> q;
   REP(i, N) {
-    string tmp;
-    cin >> tmp;
-    strque.emplace(tmp);
+    string Si;
+    cin >> Si;
+    q.emplace(Si);
   }
-  while (!strque.empty()) {
-    cout << strque.top();
-    strque.pop();
+  while (!q.empty()) {
+    cout << q.top();
+    q.pop();
   }
   cout << endl;
   return 0;

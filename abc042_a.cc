@@ -9,10 +9,6 @@
 #define RREP1(i, n) RFOR(i, 1, int(n) + 1)
 #define ALL(c) begin(c), end(c)
 
-template <typename T> using vec = std::vector<T>;
-using vi = vec<int>;
-using vvi = vec<vi>;
-using pii = std::pair<int, int>;
 using ll = long long;
 using ld = long double;
 // constexpr auto mod = 1000000007;
@@ -21,10 +17,6 @@ using namespace std;
 int main() {
   int A, B, C;
   cin >> A >> B >> C;
-  vi lst{A, B, C};
-  sort(ALL(lst));
-  vi expected{5, 5, 7};
-  cout << (lst == expected ? "YES" : "NO") << endl;
-
+  cout << ((A * B * C == 5 * 7 * 5) ? "YES" : "NO") << endl;
   return 0;
 }

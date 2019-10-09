@@ -15,9 +15,6 @@ int _ = (
 #endif
     std::cout.precision(10), std::cout.setf(std::ios::fixed));
 
-template <typename T> using vec = std::vector<T>;
-using vi = vec<int>;
-using ll = long long;
 using ld = long double;
 // constexpr auto mod = 1000000007;
 using namespace std;

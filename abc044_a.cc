@@ -22,11 +22,7 @@ using namespace std;
 
 int main() {
   int N, K, X, Y;
-  for (auto &&i : {&N, &K, &X, &Y}) {
-    cin >> *i;
-  }
-  int answer = 0;
-  REP(i, N) { answer += i < K ? X : Y; }
-  cout << answer << endl;
+  cin >> N >> K >> X >> Y;
+  cout << ((N - K > 0) ? (K * X + (N - K) * Y) : N * X) << endl;
   return 0;
 }

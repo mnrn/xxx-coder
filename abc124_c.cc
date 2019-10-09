@@ -15,8 +15,6 @@ int _ = (
 #endif
     std::cout.precision(10), std::cout.setf(std::ios::fixed));
 
-template <typename T> using vec = std::vector<T>;
-using vi = vec<int>;
 using ll = long long;
 using ld = long double;
 // constexpr auto mod = 1000000007;
@@ -26,7 +24,7 @@ int main() {
   string s;
   cin >> s;
   const auto size = s.size();
-  vi changed = {0, 0};
+  vector<int> changed = {0, 0};
   REP(i, size) {
     if (s[i] != (i % 2 == 0 ? '0' : '1')) {
       changed[0]++;
