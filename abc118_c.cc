@@ -20,19 +20,19 @@ using ld = long double;
 // constexpr auto mod = 1000000007;
 using namespace std;
 
+ll gcd(ll a, ll b) { return a < b ? gcd(b, a) : b == 0 ? a : gcd(b, a % b); }
+
+ll solve(const vector<ll> &A, int i, int N) {
+  return i + 1 == N ? gcd(A[N - 2], A[N - 1]) : gcd(A[i], solve(A, i + 1, N));
+}
+
 int main() {
-  int A, B, C, X;
-  cin >> A >> B >> C >> X;
-  int answer = 0;
-  REP(a, A + 1) {
-    REP(b, B + 1) {
-      REP(c, C + 1) {
-        if (500 * a + 100 * b + 50 * c == X) {
-          answer++;
-        }
-      }
-    }
-  }
+  int N;
+  cin >> N;
+  vector<ll> A(N);
+  REP(i, N) { cin >> A[i]; }
+
+  const ll answer = solve(A, 0, N);
   cout << answer << endl;
   return 0;
 }

@@ -20,19 +20,37 @@ using ld = long double;
 // constexpr auto mod = 1000000007;
 using namespace std;
 
-int main() {
-  int A, B, C, X;
-  cin >> A >> B >> C >> X;
-  int answer = 0;
-  REP(a, A + 1) {
-    REP(b, B + 1) {
-      REP(c, C + 1) {
-        if (500 * a + 100 * b + 50 * c == X) {
-          answer++;
-        }
-      }
-    }
+vector<ll> d, p;
+
+ll solve(ll N, ll X) {
+  if (N == 0) {
+    return X <= 0 ? 0 : 1;
   }
-  cout << answer << endl;
+  else if (X <= 1 + d[N - 1]) {
+    return solve(N - 1, X - 1);
+  }
+  else if (X == 2 + d[N - 1]){
+    return 1 + p[N - 1];
+  }
+  else if (X <= 2 + 2 * d[N - 1]) {
+    return 1 + p[N - 1] + solve(N - 1, X - 2 - d[N - 1]);
+  }
+  else if (X == 3 + 2 * d[N - 1]) {
+    return 1 + 2 * p[N - 1];
+  }
+}
+
+int main() {
+  ll N, X;
+  cin >> N >> X;
+
+  d.resize(N + 1), p.resize(N + 1);
+  d[0] = p[0] = 1;
+  REP(i, N) {
+    d[i + 1] = 2 * d[i] + 3;
+    p[i + 1] = 2 * p[i] + 1;
+  }
+  cout << solve(N, X) << endl;
+
   return 0;
 }

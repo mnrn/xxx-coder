@@ -21,18 +21,18 @@ using ld = long double;
 using namespace std;
 
 int main() {
-  int A, B, C, X;
-  cin >> A >> B >> C >> X;
-  int answer = 0;
-  REP(a, A + 1) {
-    REP(b, B + 1) {
-      REP(c, C + 1) {
-        if (500 * a + 100 * b + 50 * c == X) {
-          answer++;
-        }
-      }
-    }
+  ll N;
+  cin >> N;
+  vector<ll> h(N);
+  REP(i, N) { cin >> h[i]; }
+
+  vector<ll> dp(N, 0);
+  dp[0] = 0;
+  dp[1] = dp[0] + abs(h[0] - h[1]);
+  FOR(i, 2, N) {
+    dp[i] =
+        min(dp[i - 1] + abs(h[i] - h[i - 1]), dp[i - 2] + abs(h[i] - h[i - 2]));
   }
-  cout << answer << endl;
+  cout << dp[N - 1] << endl;
   return 0;
 }
