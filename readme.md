@@ -14,3 +14,8 @@
 - [abc114_c](https://atcoder.jp/contests/abc114/tasks/abc114_c)
 - [abc029_c](https://atcoder.jp/contests/abc029/tasks/abc029_c)
 - [abc007_c](https://abc007.contest.atcoder.jp/tasks/abc007_3)
+- [abc088_d](https://abc088.contest.atcoder.jp/tasks/abc088_d)
+- [joi2011yo_e](https://atcoder.jp/contests/joi2011yo/tasks/joi2011yo_e)
+- [joi2008yo_a](https://atcoder.jp/contests/joi2008yo/tasks/joi2008yo_a)
+- [abc076_b](https://atcoder.jp/contests/abc076/tasks/abc076_b)
+- [abc083_c](https://atcoder.jp/contests/abc083/tasks/arc088_a)

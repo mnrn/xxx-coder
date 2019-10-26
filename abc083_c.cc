@@ -21,4 +21,18 @@ template <typename T> using vec = std::vector<T>;
 using pii = std::pair<int, int>;
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  ll X, Y;
+  cin >> X >> Y;
+  set<ll> A;
+  A.emplace(X);
+  ll ns = X;
+  for (ll i = X; i <= Y; i += ns) {
+    if (i % ns == 0 && A.count(i) == 0) {
+      A.emplace(i);
+      ns = i;
+    } 
+  }
+  cout << A.size() << endl;
+  return 0;
+}

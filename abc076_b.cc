@@ -17,8 +17,15 @@ int _ = (
 
 using ll = long long;
 using ld = long double;
-template <typename T> using vec = std::vector<T>;
-using pii = std::pair<int, int>;
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  int N, K;
+  cin >> N >> K;
+  int answer = 1;
+  REP(i, N) {
+    answer = min(answer * 2, answer + K);
+  }
+  cout << answer << endl;
+  return 0;
+}

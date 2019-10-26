@@ -17,8 +17,20 @@ int _ = (
 
 using ll = long long;
 using ld = long double;
-template <typename T> using vec = std::vector<T>;
-using pii = std::pair<int, int>;
+// constexpr auto mod = 1000000007;
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  int C;
+  cin >> C;
+  constexpr array<int, 6> xs = {500, 100, 50, 10, 5, 1};
+  int v = 1000 - C;
+  int answer = 0;
+  REP(i, 6) {
+    const int t = v / xs[i];
+    v -= xs[i] * t;
+    answer += t;
+  }
+  cout << answer << endl;
+  return 0;
+}
