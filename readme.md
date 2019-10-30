@@ -31,3 +31,5 @@
 - [abc085_c](https://atcoder.jp/contests/abc085/tasks/abc085_c)
 - [abc125_c](https://atcoder.jp/contests/abc125/tasks/abc125_c)
 - [abc075_b](https://atcoder.jp/contests/abc075/tasks/abc075_b)
+- [abc095_c](https://atcoder.jp/contests/abc098/tasks/arc098_a)
+- [joi2007yo_f](https://atcoder.jp/contests/joi2007yo/tasks/joi2007yo_f)
