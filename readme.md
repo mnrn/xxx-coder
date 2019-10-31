@@ -33,3 +33,6 @@
 - [abc075_b](https://atcoder.jp/contests/abc075/tasks/abc075_b)
 - [abc095_c](https://atcoder.jp/contests/abc098/tasks/arc098_a)
 - [joi2007yo_f](https://atcoder.jp/contests/joi2007yo/tasks/joi2007yo_f)
+- [v0_0030](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0030)
+- [alds1_11_c](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_C&lang=jp)
+- [v10_1052](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1052&lang=jp)
