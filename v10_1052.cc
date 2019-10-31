@@ -22,11 +22,10 @@ using pii = std::pair<int, int>;
 using namespace std;
 
 struct island {
-  ll index;
   ll weight;
   ll limit;
   island() = default;
-  island(int index, ll weight, ll limit) : index(index), weight(weight), limit(limit) {}
+  island(ll weight, ll limit) : weight(weight), limit(limit) {}
   bool operator < (const island& rhs) const {
     return limit > rhs.limit;  // NOTE: REVERSE for min priority queue.
   }
@@ -43,7 +42,7 @@ int main() {
     REP(i, n) {
       ll weight, limit;
       cin >> weight >> limit;
-      q.emplace(i, weight, limit);
+      q.emplace(weight, limit);
     }
 
     ll acc = 0;
