@@ -16,14 +16,29 @@ int _ = (
     std::cout.precision(10), std::cout.setf(std::ios::fixed));
 
 using ll = long long;
-using ull = unsigned long long;
 using ld = long double;
-// using i32 = int32_t;
-// using i64 = int64_t;
-// using u64 = uint64_t;
-// using f64 = double;
 template <typename T> using vec = std::vector<T>;
 using pii = std::pair<int, int>;
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  int N;
+  cin >> N;
+  vec<ll> A(N), B(N), C(N);
+  REP(i, N) { cin >> A[i]; }
+  REP(i, N) { cin >> B[i]; }
+  REP(i, N) { cin >> C[i]; }
+  sort(ALL(A));
+  sort(ALL(C));
+
+  ll answer = 0;
+  REP(i, N) {
+    const auto ai = upper_bound(ALL(A), B[i] - 1);
+    const auto al = distance(A.begin(), ai);
+    const auto ci = lower_bound(ALL(C), B[i] + 1);
+    const auto cl = distance(ci, C.end());
+    answer += (al * cl);
+  }
+  cout << answer << endl;
+  return 0;
+}

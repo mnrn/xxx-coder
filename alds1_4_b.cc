@@ -16,14 +16,21 @@ int _ = (
     std::cout.precision(10), std::cout.setf(std::ios::fixed));
 
 using ll = long long;
-using ull = unsigned long long;
 using ld = long double;
-// using i32 = int32_t;
-// using i64 = int64_t;
-// using u64 = uint64_t;
-// using f64 = double;
 template <typename T> using vec = std::vector<T>;
 using pii = std::pair<int, int>;
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  int n, q;
+  cin >> n;
+  vec<ll> S(n);
+  REP(i, n) { cin >> S[i]; }
+  cin >> q;
+  vec<ll> T(q);
+  REP(i, q) { cin >> T[i]; }
+  ll answer = 0;
+  REP(i, q) { answer += (binary_search(ALL(S), T[i]) ? 1 : 0); }
+  cout << answer << endl;
+  return 0;
+}

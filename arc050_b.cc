@@ -26,4 +26,19 @@ template <typename T> using vec = std::vector<T>;
 using pii = std::pair<int, int>;
 using namespace std;
 
-int main() { return 0; }
+constexpr bool check(ll R, ll B, ll x, ll y, ll k) {
+  return R - k >= 0 && B - k >= 0 &&
+         k <= (((R - k) / (x - 1)) + ((B - k) / (y - 1)));
+}
+
+int main() {
+  ll R, B, x, y;
+  cin >> R >> B >> x >> y;
+  ll ok = 0, ng = min(R, B) + 1;
+  while (ok + 1 < ng) {
+    ll mid = ok + (ng - ok) / 2;
+    (check(R, B, x, y, mid) ? ok : ng) = mid;
+  }
+  cout << ok << endl;
+  return 0;
+}
