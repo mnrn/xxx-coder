@@ -18,10 +18,6 @@ int _ = (
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;
-// using i32 = int32_t;
-// using i64 = int64_t;
-// using u64 = uint64_t;
-// using f64 = double;
 template <typename T> using vec = std::vector<T>;
 using pii = std::pair<int, int>;
 using namespace std;
