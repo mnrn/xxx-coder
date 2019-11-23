@@ -21,4 +21,27 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  ll N, M;
+  cin >> N >> M;
+  vec<ll> P(N);
+  REP(i, N) { cin >> P[i]; }
+  P.emplace_back(0);
+
+  vec<ll> Q((N + 1) * (N + 1));
+  REP(i, N + 1) {
+    REP(j, N + 1) { Q[i * N + j] = P[i] + P[j]; }
+  }
+  sort(ALL(Q));
+
+  ll answer = -1;
+  REP(i, (N + 1) * (N + 1)) {
+    if (Q[i] <= M) {
+      const auto lb = lower_bound(ALL(Q), M - Q[i] + 1) - 1;
+      answer = max(answer, Q[i] + *lb);
+    }
+  }
+  cout << answer << endl;
+
+  return 0;
+}

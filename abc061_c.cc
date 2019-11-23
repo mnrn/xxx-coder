@@ -21,4 +21,23 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
-int main() { return 0; }
+int main() {
+  ll N, K, a, b;
+  cin >> N >> K;
+  vector<pair<ll, ll>> ps;
+  REP(i, N) {
+    cin >> a >> b;
+    ps.emplace_back(a, b);
+  }
+  sort(ALL(ps));
+
+  ll acc = 0;
+  for (const auto &p : ps) {
+    acc += p.second;
+    if (K <= acc) {
+      cout << p.first << endl;
+      break;
+    }
+  }
+  return 0;
+}
