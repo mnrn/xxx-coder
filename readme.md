@@ -41,7 +41,6 @@
 - [arc050_b](https://atcoder.jp/contests/arc050/tasks/arc050_b)
 - [abc061_c](https://atcoder.jp/contests/abc061/tasks/abc061_c)
 - [exawizards2019_c](https://atcoder.jp/contests/exawizards2019/tasks/exawizards2019_c)
-- [joi2008ho_c](https://atcoder.jp/contests/joi2008ho/tasks/joi2008ho_c)
 - [arc017_3](https://arc017.contest.atcoder.jp/tasks/arc017_3)
 - [dpl_1_h](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_H&lang=jp)
 - [abc045_c](https://atcoder.jp/contests/abc045/tasks/arc061_a)

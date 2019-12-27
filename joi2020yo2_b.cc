@@ -15,20 +15,28 @@ int _ = (
 #endif
     std::cout.precision(10), std::cout.setf(std::ios::fixed));
 
+using ll = long long;
+using ull = unsigned long long;
 using ld = long double;
-// constexpr auto mod = 1000000007;
+template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s, t;
-  cin >> s;
-  for (auto &&si : s) {
-    if (si != 'B') {
-      t.push_back(si);
-    } else if (!t.empty()) {
-      t.pop_back();
-    }
+  ll N;
+  cin >> N;
+  vec<ll> A(N);
+  vec<ll> T(N);
+  for (int i = 0; i < N; i++) {
+    cin >> A[i];
+    cin >> T[i];
   }
-  cout << t << endl;
+
+  ll answer = -1;
+  for (int i = 0; i < N; i++) {
+    T[i] = max(A[i], T[i]);
+    answer = max(answer, A[i] + T[i]);
+  }
+
+  cout << answer << endl;
   return 0;
 }
