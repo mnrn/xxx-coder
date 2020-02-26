@@ -1,5 +1,9 @@
 # xxx-coder
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![Language](https://img.shields.io/badge/Language-C%2B%2B-ff64b4)
+
+
 ## Problem Links
 
 - [abc042_a](https://atcoder.jp/contests/abc042/tasks/abc042_a)
