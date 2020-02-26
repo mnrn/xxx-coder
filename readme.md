@@ -1,6 +1,6 @@
 # xxx-coder
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
 ![Language](https://img.shields.io/badge/Language-C%2B%2B-ff64b4)
 
 
