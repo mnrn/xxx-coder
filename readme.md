@@ -3,14 +3,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
 ![Language](https://img.shields.io/badge/Language-C%2B%2B-ff64b4)
 
-
 ## Problem Links
 
-- [abc042_a](https://atcoder.jp/contests/abc042/tasks/abc042_a)
-- [abc043_a](https://atcoder.jp/contests/abc043/tasks/abc043_a)
-- [abc042_b](https://atcoder.jp/contests/abc042/tasks/abc042_b)
-- [abc043_b](https://atcoder.jp/contests/abc043/tasks/abc043_b)
-- [abc124_c](https://atcoder.jp/contests/abc124/tasks/abc124_c)
+- Basics (基礎的な内容)
+  - String (文字列)
+    - [abc042_a](https://atcoder.jp/contests/abc042/tasks/abc042_a)
+    - [abc042_b](https://atcoder.jp/contests/abc042/tasks/abc042_b)
+  - Arithmetic (計算)
+    - [abc043_a](https://atcoder.jp/contests/abc043/tasks/abc043_a)
+    - [abc043_b](https://atcoder.jp/contests/abc043/tasks/abc043_b)
+    - [abc124_c](https://atcoder.jp/contests/abc124/tasks/abc124_c)
 - [abc044_a](https://abc044.contest.atcoder.jp/tasks/abc044_a)
 - [abc044_b](https://abc044.contest.atcoder.jp/tasks/abc044_b)
 - [abc043_c](https://atcoder.jp/contests/abc043/tasks/arc059_a)
