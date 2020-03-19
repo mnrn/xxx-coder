@@ -39,7 +39,7 @@
   - [abc114_c](https://atcoder.jp/contests/abc114/tasks/abc114_c)
   - [abc029_c](https://atcoder.jp/contests/abc029/tasks/abc029_c)
   - [v0_0030](http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0030)
-- Breath first search (幅優先探索)
+- Breadth first search (幅優先探索)
   - [abc007_c](https://abc007.contest.atcoder.jp/tasks/abc007_3)
   - [abc088_d](https://abc088.contest.atcoder.jp/tasks/abc088_d)
   - [joi2011yo_e](https://atcoder.jp/contests/joi2011yo/tasks/joi2011yo_e)
