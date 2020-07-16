@@ -1,6 +1,7 @@
 # xxx-coder
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
+![Launguage-C++](https://img.shields.io/badge/Language-C%2B%2B-orange)
 
 ## Problem Links
 
