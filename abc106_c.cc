@@ -26,10 +26,7 @@ int main() {
   ll K;
   cin >> S >> K;
   smatch m;
-  if (regex_match(S, m, regex("^(1+)([1-9]*)$"))) {
-    cout << ((m.length(1) >= K) ? '1' : m.str(2).front()) << endl;
-  } else {
-    cout << S.front() << endl;
-  }
+  regex_match(S, m, regex("^(1*)([1-9]*)$"));
+  cout << ((m.length(1) >= K) ? '1' : m.str(2).front()) << endl;
   return 0;
 }
