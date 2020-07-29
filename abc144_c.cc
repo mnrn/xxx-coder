@@ -22,11 +22,15 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
-
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  ll N;
+  cin >> N;
+  ll answer = numeric_limits<ll>::max();
+  for (ll a = 1; a * a <= N; a++) {
+    if (N % a == 0) {
+      const ll b = N / a;
+      answer = min(a + b - 2, answer);
+    }
+  }
+  cout << answer << endl;
   return 0;
 }

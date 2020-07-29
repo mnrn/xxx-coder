@@ -22,11 +22,12 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
-
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  ll N, A, B;
+  cin >> N >> A >> B;
+  const auto distance = B - A;
+  const auto answer = (distance % 2 == 0)
+                          ? distance / 2
+                          : min(A - 1, N - B) + 1 + (distance - 1) / 2;
+  cout << answer << endl;
   return 0;
 }

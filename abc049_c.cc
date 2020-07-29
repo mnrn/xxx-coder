@@ -22,11 +22,9 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
-
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  string S;
+  cin >> S;
+  cout << (regex_match(S, regex("^(?:dream(?:er)?|eraser?)+$")) ? "YES" : "NO")
+       << endl;
   return 0;
 }

@@ -21,12 +21,23 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
-int main() {
-  string s;
-  cin >> s;
+static ll count2(ll x) {
+  ll res = 0;
+  while (x % 2 == 0) {
+    x /= 2;
+    res++;
+  }
+  return res;
+}
 
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+int main() {
+  ll N;
+  cin >> N;
+  vec<ll> a(N);
+  REP(i, N) cin >> a[i];
+
+  const ll res =
+      accumulate(ALL(a), 0ll, [](ll acc, ll x) { return acc += count2(x); });
+  cout << res << endl;
   return 0;
 }

@@ -22,11 +22,9 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
-
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  ll D, N;
+  cin >> D >> N;
+  constexpr array<ll, 3> f{1, 100, 10'000};
+  cout << ((N != 100 ? N : 101) * f[D]) << endl;
   return 0;
 }

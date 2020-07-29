@@ -22,11 +22,14 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
-
+  string S;
+  ll K;
+  cin >> S >> K;
   smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  if (regex_match(S, m, regex("^(1+)([1-9]*)$"))) {
+    cout << ((m.length(1) >= K) ? '1' : m.str(2).front()) << endl;
+  } else {
+    cout << S.front() << endl;
+  }
   return 0;
 }

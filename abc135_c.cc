@@ -22,11 +22,22 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
+  ll N;
+  cin >> N;
+  vec<ll> A(N + 1), B(N);
+  REP(i, N + 1) cin >> A[i];
+  REP(i, N) cin >> B[i];
 
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  ll answer = 0;
+  REP(i, N) {
+    if (A[i] < B[i]) {
+      const ll rest = min(B[i] - A[i], A[i + 1]);
+      A[i + 1] -= rest;
+      answer += A[i] + rest;
+    } else {
+      answer += B[i];
+    }
+  }
+  cout << answer << endl;
   return 0;
 }

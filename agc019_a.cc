@@ -22,11 +22,12 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
-
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  ll Q, H, S, D, N;
+  cin >> Q >> H >> S >> D >> N;
+  const ll h = min(H, 2 * Q);
+  const ll s = min(S, 2 * h);
+  const ll d = min(D, 2 * s);
+  const ll a = (N / 2) * d + (N % 2) * s;
+  cout << a << endl;
   return 0;
 }

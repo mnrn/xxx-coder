@@ -22,11 +22,16 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
+  ll N;
+  cin >> N;
+  vec<ll> H(N);
+  REP(i, N) cin >> H[i];
 
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  REP(i, N) {
+    if (i - 1 < 0 || H[i - 1] < H[i]) {
+      H[i]--;
+    }
+  }
+  cout << (is_sorted(ALL(H)) ? "Yes" : "No") << endl;
   return 0;
 }

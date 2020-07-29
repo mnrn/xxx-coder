@@ -22,11 +22,16 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string s;
-  cin >> s;
+  ll N;
+  cin >> N;
+  vec<ll> a(3 * N);
+  REP(i, 3 * N) cin >> a[i];
 
-  smatch m;
-  regex_search(s, m, regex("A[A-Z]*Z"));
-  cout << m.str().length() << endl;
+  sort(ALL(a));
+  ll answer = 0;
+  for (ll i = N; i < 3 * N; i += 2) {
+    answer += a[i];
+  }
+  cout << answer << endl;
   return 0;
 }
