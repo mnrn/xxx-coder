@@ -24,19 +24,12 @@ using namespace std;
 int main() {
   string S;
   cin >> S;
-  const set<char> ACGT = {'A', 'C', 'G', 'T'};
-  const int N = S.size();
 
-  size_t answer = 0;
-  for (int i = 0; i < N; i++) {
-    for (int j = 1; j <= N - i; j++) {
-      const auto sub = S.substr(i, j);
-      if (all_of(ALL(sub), [&ACGT](const char &c) {
-            return ACGT.find(c) != ACGT.cend();
-          })) {
-        answer = max(answer, sub.size());
-      }
-    }
+  const regex re{"[ATCG]+"};
+  int answer = 0;
+  for (sregex_iterator it(ALL(S), re), end; it != end; ++it) {
+    auto &&m = *it;
+    answer = max(answer, static_cast<int>(m.length()));
   }
   cout << answer << endl;
 

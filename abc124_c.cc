@@ -17,7 +17,6 @@ int _ = (
 
 using ll = long long;
 using ld = long double;
-// constexpr auto mod = 1000000007;
 using namespace std;
 
 int main() {
@@ -25,13 +24,9 @@ int main() {
   cin >> s;
   const auto size = s.size();
   vector<int> changed = {0, 0};
-  REP(i, size) {
-    if (s[i] != (i % 2 == 0 ? '0' : '1')) {
-      changed[0]++;
-    } else {
-      changed[1]++;
-    }
-  }
+  REP(i, size)
+  (s[i] != (i % 2 == 0 ? '0' : '1') ? changed[0] : changed[1]) += 1;
+
   cout << min(changed[0], changed[1]) << endl;
   return 0;
 }
