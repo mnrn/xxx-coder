@@ -22,9 +22,19 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
+  ll N, sum = 0;
+  cin >> N;
+  vec<ll> A(N);
+  REP(i, N) {
+    cin >> A[i];
+    sum += A[i];
+  }
 
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  ll answer = numeric_limits<ll>::max(), acc = 0;
+  REP(i, N) {
+    answer = min(answer, abs((sum - acc) - acc));
+    acc += A[i];
+  }
+  cout << answer << endl;
   return 0;
 }

@@ -25,6 +25,11 @@ int main() {
   string S;
   cin >> S;
 
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  ll r = 0;
+  ll b = 0;
+  for (const auto &c : S) {
+    (c == '0' ? r : b)++;
+  }
+  cout << min(r, b) * 2 << endl;
   return 0;
 }

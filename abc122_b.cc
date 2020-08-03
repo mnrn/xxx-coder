@@ -25,7 +25,7 @@ int main() {
   string S;
   cin >> S;
 
-  const regex re{"[ATCG]+"};
+  const regex re("[ATCG]+");
   int answer = 0;
   for (sregex_iterator it(ALL(S), re), end; it != end; ++it) {
     auto &&m = *it;

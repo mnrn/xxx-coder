@@ -25,7 +25,7 @@ int main() {
   const auto size = s.size();
   vector<int> changed = {0, 0};
   REP(i, size)
-  (s[i] != (i % 2 == 0 ? '0' : '1') ? changed[0] : changed[1]) += 1;
+  (s[i] != (i % 2 == 0 ? '0' : '1') ? changed[0] : changed[1])++;
 
   cout << min(changed[0], changed[1]) << endl;
   return 0;

@@ -29,7 +29,7 @@ int main() {
   cin >> S;
 
   const string pat = (boost::format("^\\d{%d}-\\d{%d}$") % A % B).str();
-  regex re(pat);
+  const regex re(pat);
   cout << (regex_match(S, re) ? "Yes" : "No") << endl;
 
   return 0;

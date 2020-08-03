@@ -1,5 +1,6 @@
 // #define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
+#include <boost/multiprecision/cpp_int.hpp>
 
 #define FOR(i, a, b) for (int i = (a); i < int(b); ++i)
 #define RFOR(i, a, b) for (int i = (b)-1; i >= int(a); --i)
@@ -20,11 +21,17 @@ using ull = unsigned long long;
 using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
+using namespace boost::multiprecision;
 
 int main() {
-  string S;
-  cin >> S;
-
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  ll N;
+  cin >> N;
+  ll answer = 0;
+  REP(i, N) {
+    ll a;
+    cin >> a;
+    answer += a - 1;
+  }
+  cout << answer << endl;
   return 0;
 }

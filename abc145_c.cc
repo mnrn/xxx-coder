@@ -22,9 +22,26 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
-
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  ll N;
+  cin >> N;
+  vec<pair<ld, ld>> p(N);
+  REP(i, N) {
+    ll x, y;
+    cin >> x >> y;
+    p[i] = make_pair(x, y);
+  }
+  vec<ll> q(N);
+  iota(ALL(q), 0);
+  ld answer = 0;
+  ll d = 0;
+  do {
+    for (ll i = 0; i < N - 1; i++) {
+      answer += hypot(p[q[i + 1]].first - p[q[i]].first,
+                      p[q[i + 1]].second - p[q[i]].second);
+    }
+    d++;
+  } while (next_permutation(ALL(q)));
+  answer /= static_cast<ld>(d);
+  cout << answer << endl;
   return 0;
 }

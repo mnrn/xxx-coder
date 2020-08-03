@@ -22,9 +22,23 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
-
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  int N, M;
+  cin >> N;
+  string w;
+  unordered_map<string, int> ws;
+  REP(i, N) {
+    cin >> w;
+    ws[w]++;
+  }
+  cin >> M;
+  REP(i, M) {
+    cin >> w;
+    ws[w]--;
+  }
+  const auto answer =
+      max(0, max_element(ALL(ws), [](const auto &lhs, const auto &rhs) {
+               return lhs.second < rhs.second;
+             })->second);
+  cout << answer << endl;
   return 0;
 }

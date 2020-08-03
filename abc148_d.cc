@@ -29,11 +29,7 @@ int main() {
   int a, broken = 0;
   REP1(i, N) {
     cin >> a;
-    if (a == key) {
-      key++;
-    } else {
-      broken++;
-    }
+    (a == key ? key : broken)++;
   }
   cout << (N == broken ? -1 : broken) << endl;
   return 0;

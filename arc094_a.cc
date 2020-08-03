@@ -22,9 +22,15 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
+  vec<int> ABC(3);
+  cin >> ABC[0] >> ABC[1] >> ABC[2];
 
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  sort(ALL(ABC));
+  const auto sum = accumulate(ALL(ABC), 0);
+  const auto A = ABC[2], B = ABC[1], C = ABC[0];
+
+  const int diff = 3 * A - sum;
+  const int res = ((diff & 1) ? (3 * (A + 1) - sum) : diff) / 2;
+  cout << res << endl;
   return 0;
 }

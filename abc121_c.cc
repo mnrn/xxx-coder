@@ -22,9 +22,17 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
-
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  ll N, M;
+  cin >> N >> M;
+  vec<pair<ll, ll>> X(N);
+  REP(i, N) cin >> X[i].first >> X[i].second;
+  sort(ALL(X));
+  ll res = 0;
+  for (ll i = 0, cans = 0; cans < M; i++) {
+    const auto tmp = cans;
+    cans = min(M, cans + X[i].second);
+    res += (cans - tmp) * X[i].first;
+  }
+  cout << res << endl;
   return 0;
 }

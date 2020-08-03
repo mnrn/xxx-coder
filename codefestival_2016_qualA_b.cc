@@ -22,9 +22,24 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
+  ll N;
+  cin >> N;
+  vec<ll> a(N);
+  REP(i, N) {
+    cin >> a[i];
+    a[i]--;
+  }
 
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  set<pair<ll, ll>> res;
+  REP(i, N) {
+    if (a[a[i]] == i) {
+      ll t = a[i], u = i;
+      if (t > u) {
+        swap(t, u);
+      }
+      res.emplace(t, u);
+    }
+  }
+  cout << res.size() << endl;
   return 0;
 }

@@ -21,10 +21,25 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
-int main() {
-  string S;
-  cin >> S;
+struct solve {
+  explicit solve(const vec<ull> &A) : A(A) { cout << exec(0, 1) << endl; }
+  ull exec(ull depth, ull acc) {
+    if (depth == A.size()) {
+      return (acc & 1) ? 0 : 1;
+    } else {
+      return exec(depth + 1, acc * A[depth]) +
+             exec(depth + 1, acc * (A[depth] - 1)) +
+             exec(depth + 1, acc * (A[depth] + 1));
+    }
+  }
+  vec<ull> A;
+};
 
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+int main() {
+  ull N;
+  cin >> N;
+  vec<ull> A(N);
+  REP(i, N) cin >> A[i];
+  solve res(A);
   return 0;
 }

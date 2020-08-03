@@ -22,9 +22,8 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
-
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  ull N, K;
+  cin >> N >> K;
+  cout << K * static_cast<ull>(pow(K - 1, N - 1)) << endl;
   return 0;
 }

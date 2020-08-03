@@ -22,9 +22,14 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
-
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  ll A, B, C;
+  cin >> A >> B >> C;
+  vec<ll> v{A, B, C};
+  if (any_of(ALL(v), [](ll u) { return (u & 1) == 0; })) {
+    cout << 0 << endl;
+    return 0;
+  }
+  sort(ALL(v));
+  cout << v[0] * v[1] << endl;
   return 0;
 }

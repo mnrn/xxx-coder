@@ -22,9 +22,15 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
+  ull N;
+  cin >> N;
 
-  cout << (regex_match(S, regex("^A[a-z]+C[a-z]+$")) ? "AC" : "WA") << endl;
+  constexpr ull M = 1000000007;
+  ull answer = 1;
+  REP1(i, N) {
+    answer *= i;
+    answer %= M;
+  }
+  cout << answer << endl;
   return 0;
 }
