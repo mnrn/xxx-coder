@@ -22,5 +22,21 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  return 0; 
+  int N;
+  string S;
+  cin >> N >> S;
+
+  int ans = 0;
+  set<char> L;
+  for (int i = 0; i < N - 1; i++) {
+    L.emplace(S[i]);
+    set<char> R, res;
+    for (int j = i + 1; j < N; j++) {
+      R.emplace(S[j]);
+    }
+    set_intersection(ALL(L), ALL(R), inserter(res, res.end()));
+    ans = max(ans, static_cast<int>(res.size()));
+  }
+  cout << ans << endl;
+  return 0;
 }

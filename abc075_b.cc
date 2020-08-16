@@ -1,5 +1,6 @@
 // #define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
+#include <boost/lexical_cast.hpp>
 
 #define FOR(i, a, b) for (int i = (a); i < int(b); ++i)
 #define RFOR(i, a, b) for (int i = (b)-1; i >= int(a); --i)
@@ -21,53 +22,51 @@ template <typename T> using vec = std::vector<T>;
 using pii = std::pair<int, int>;
 using namespace std;
 
-int H, W;
-vec<vec<char>> S;
-vec<vec<int>> C;
-
-void solve() {
-  REP(y, H) {
-    REP(x, W) {
-      if (S[y][x] == '#') {
-        continue;
+struct solve {
+  solve(int H, int W, const vec<vec<char>> &S, const vec<vec<int>> &C)
+      : H(H), W(W), S(S), C(C) {
+    exec();
+  }
+  ~solve() {
+    REP(y, H) {
+      REP(x, W) {
+        cout << (C[y][x] == -1 ? '#' : boost::lexical_cast<char>(C[y][x]));
       }
-      int cost = 0;
-      for (int dy = -1; dy <= 1; dy++) {
-        for (int dx = -1; dx <= 1; dx++) {
-          const int nx = x + dx, ny = y + dy;
+      cout << endl;
+    }
+  }
+  void exec() {
+    REP(y, H) {
+      REP(x, W) {
+        if (S[y][x] == '#') {
+          continue;
+        }
+        int cost = 0;
+        REP(i, 8) {
+          const int nx = x + dx[i], ny = y + dy[i];
           if (0 <= nx && nx < W && 0 <= ny && ny < H && S[ny][nx] == '#') {
             cost++;
           }
         }
-      }
-      C[y][x] = cost;
-    }
-  }
-  REP(y, H) {
-    REP(x, W) {
-      if (C[y][x] == -1) {
-        cout << '#';
-      }
-      else {
-        cout << C[y][x];
+        C[y][x] = cost;
       }
     }
-    cout << endl;
   }
-}
+  int H, W;
+  vec<vec<char>> S;
+  vec<vec<int>> C;
+  static constexpr array<int, 8> dx{-1, -1, -1, 0, 1, 1, 1, 0};
+  static constexpr array<int, 8> dy{-1, 0, 1, 1, 1, 0, -1, -1};
+};
 
 int main() {
+  int H, W;
   cin >> H >> W;
-  S.resize(H);
-  C.resize(H);
+  vec<vec<char>> S(H, vec<char>(W));
+  vec<vec<int>> C(H, vec<int>(W, -1));
   REP(y, H) {
-    S[y].resize(W);
-    C[y].resize(W);
-    REP(x, W) {
-      cin >> S[y][x];
-      C[y][x] = -1;
-    }
+    REP(x, W) { cin >> S[y][x]; }
   }
-  solve();
+  solve res(H, W, S, C);
   return 0;
 }

@@ -22,5 +22,16 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  return 0; 
+  string S;
+  cin >> S;
+  ll bc = 0, res = 0;
+  for (const auto &c : S) {
+    if (c == 'B') {
+      bc++;
+    } else {
+      res += bc;
+    }
+  }
+  cout << res << endl;
+  return 0;
 }

@@ -22,5 +22,8 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  return 0; 
+  ull N;
+  cin >> N;
+  cout << N * (N - 1) / 2 << endl;
+  return 0;
 }

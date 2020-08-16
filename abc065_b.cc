@@ -22,5 +22,27 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  return 0; 
+  ll N;
+  cin >> N;
+  vec<ll> a(N);
+  REP(i, N) {
+    cin >> a[i];
+    a[i]--;
+  }
+
+  unordered_set<ll> s;
+  s.emplace(0);
+  ll res = 1;
+  for (ll next = a[0];; next = a[next], res++) {
+    if (next == 1) {
+      break;
+    } else if (s.count(next) > 0) {
+      res = -1;
+      break;
+    } else {
+      s.emplace(next);
+    }
+  }
+  cout << res << endl;
+  return 0;
 }

@@ -22,5 +22,24 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  return 0; 
+  string S;
+  cin >> S;
+
+  const ll N = S.size();
+  vec<ll> L(N + 1, 0);
+  for (ll i = 0; i < N; i++) {
+    if (S[i] == '<') {
+      L[i + 1] = L[i] + 1;
+    }
+  }
+  vec<ll> R(N + 1, 0);
+  for (ll i = N - 1; i >= 0; i--) {
+    if (S[i] == '>') {
+      R[i] = R[i + 1] + 1;
+    }
+  }
+  ll res = 0;
+  REP(i, N + 1) res += max(L[i], R[i]);
+  cout << res << endl;
+  return 0;
 }

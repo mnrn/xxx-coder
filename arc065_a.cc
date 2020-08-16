@@ -22,5 +22,9 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  return 0; 
+  string S;
+  cin >> S;
+  const regex re = regex("^(?:dream(?:er)?|eraser?)+$");
+  cout << (regex_match(S, re) ? "YES" : "NO") << endl;
+  return 0;
 }

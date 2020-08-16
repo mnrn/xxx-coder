@@ -22,5 +22,14 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  return 0; 
+  ll A, B, C;
+  cin >> A >> B >> C;
+  bool res = false;
+  REP1(i, B) {
+    if (A * i % B == C) {
+      res = true;
+    }
+  }
+  cout << (res ? "YES" : "NO") << endl;
+  return 0;
 }

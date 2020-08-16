@@ -22,5 +22,19 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  return 0; 
+  ll N, a;
+  cin >> N;
+  unordered_map<int, int> m;
+  REP(i, N) {
+    cin >> a;
+    m[a]++;
+    m[a - 1]++;
+    m[a + 1]++;
+  }
+
+  const auto res = max_element(ALL(m), [](const auto &lhs, const auto &rhs) {
+                     return lhs.second < rhs.second;
+                   })->second;
+  cout << res << endl;
+  return 0;
 }

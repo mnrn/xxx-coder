@@ -22,9 +22,21 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  string S;
-  cin >> S;
-  cout << (regex_match(S, regex("^(?:dream(?:er)?|eraser?)+$")) ? "YES" : "NO")
-       << endl;
+  int N, a;
+  cin >> N;
+  int rs = 0;
+  unordered_set<int> s;
+  REP(i, N) {
+    cin >> a;
+    if (a < 3200) {
+      s.emplace(a / 400);
+    } else {
+      rs++;
+    }
+  }
+  const int sz = s.size();
+  const int resmin = max(1, sz);
+  const int resmax = sz + rs;
+  cout << resmin << " " << resmax << endl;
   return 0;
 }
