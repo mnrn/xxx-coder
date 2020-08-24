@@ -1,5 +1,6 @@
 // #define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
+#include <boost/lexical_cast.hpp>
 
 #define FOR(i, a, b) for (int i = (a); i < int(b); ++i)
 #define RFOR(i, a, b) for (int i = (b)-1; i >= int(a); --i)
@@ -21,28 +22,33 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
-int main() {
-  ll N;
-  cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
-
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = -1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = 1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
+bool ok(int N, int M, const vec<int> &s, const vec<int> &c, const string &t) {
+  if (t.length() != N) {
+    return false;
+  }
+  for (int j = 0; j < M; j++) {
+    if (t[s[j] - 1] != boost::lexical_cast<char>(c[j])) {
+      return false;
     }
   }
-  cout << res << endl;
+  return true;
+}
+
+string solve(int N, int M, const vec<int> &s, const vec<int> &c) {
+  for (int i = 0; i < 1000; i++) {
+    string t = boost::lexical_cast<string>(i);
+    if (ok(N, M, s, c, t)) {
+      return t;
+    }
+  }
+  return string("-1");
+}
+
+int main() {
+  int N, M;
+  cin >> N >> M;
+  vec<int> s(M), c(M);
+  REP(i, M) { cin >> s[i] >> c[i]; }
+  cout << solve(N, M, s, c) << endl;
   return 0;
 }

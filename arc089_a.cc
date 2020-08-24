@@ -24,25 +24,18 @@ using namespace std;
 int main() {
   ll N;
   cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
+  vec<ll> t(N + 1), x(N + 1), y(N + 1);
+  t[0] = x[0] = y[0] = 0;
+  REP1(i, N) cin >> t[i] >> x[i] >> y[i];
 
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = -1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = 1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
+  FOR(i, 0, N) {
+    const ll u = t[i + 1] - t[i];
+    const ll d = abs(x[i + 1] - x[i]) + abs(y[i + 1] - y[i]);
+    if (d > u || abs(u - d) & 0x01) {
+      cout << "No" << endl;
+      return 0;
     }
   }
-  cout << res << endl;
+  cout << "Yes" << endl;
   return 0;
 }

@@ -21,28 +21,23 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
+static constexpr ll nc2(ll n) { return n <= 1 ? 0 : n * (n - 1) / 2; }
+
 int main() {
   ll N;
   cin >> N;
   vec<ll> A(N);
-  REP(i, N) cin >> A[i];
-
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = -1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = 1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
-    }
+  unordered_map<ll, ll> m;
+  REP(i, N) {
+    cin >> A[i];
+    m[A[i]]++;
   }
-  cout << res << endl;
+
+  ll acc = 0;
+  for (const auto &[_, v] : m) {
+    acc += nc2(v);
+  }
+
+  REP(i, N) { cout << acc - (m[A[i]] - 1) << endl; }
   return 0;
 }

@@ -22,27 +22,42 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  ll N;
-  cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
+  int H, W;
+  cin >> H >> W;
+  vec<vec<char>> a(H, vec<char>(W));
+  REP(i, H) REP(j, W) cin >> a[i][j];
 
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = -1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = 1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
+  unordered_set<int> sy;
+  REP(y, H) {
+    REP(x, W) {
+      if (a[y][x] == '#') {
+        sy.emplace(y);
+        break;
+      }
     }
   }
-  cout << res << endl;
+  unordered_set<int> sx;
+  REP(x, W) {
+    REP(y, H) {
+      if (a[y][x] == '#') {
+        sx.emplace(x);
+        break;
+      }
+    }
+  }
+
+  REP(y, H) {
+    if (sy.count(y) == 0) {
+      continue;
+    }
+    REP(x, W) {
+      if (sx.count(x) == 0) {
+        continue;
+      } else {
+        cout << a[y][x];
+      }
+    }
+    cout << endl;
+  }
   return 0;
 }

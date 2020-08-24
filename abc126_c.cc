@@ -1,5 +1,6 @@
 // #define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
+#include <boost/rational.hpp>
 
 #define FOR(i, a, b) for (int i = (a); i < int(b); ++i)
 #define RFOR(i, a, b) for (int i = (b)-1; i >= int(a); --i)
@@ -21,28 +22,24 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
-int main() {
-  ll N;
-  cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
-
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = -1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = 1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
-    }
+static constexpr ll flip(ll K, ll i) {
+  ll res = i, count = 0;
+  while (res < K) {
+    res <<= 1;
+    count++;
   }
-  cout << res << endl;
+  return count;
+}
+
+int main() {
+  ll N, K;
+  cin >> N >> K;
+
+  boost::rational<ll> res;
+  REP1(i, N) {
+    boost::rational<ll> a(1, N * static_cast<ll>(pow(2, flip(K, i))));
+    res += a;
+  }
+  cout << boost::rational_cast<double>(res) << endl;
   return 0;
 }

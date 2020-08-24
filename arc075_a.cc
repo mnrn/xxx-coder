@@ -24,25 +24,25 @@ using namespace std;
 int main() {
   ll N;
   cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
 
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = -1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = 1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
+  priority_queue<ll, vector<ll>, greater<ll>> q;
+  ll res = 0;
+  REP(i, N) {
+    ll s;
+    cin >> s;
+    res += s;
+    if (s % 10 != 0) {
+      q.emplace(s);
     }
   }
-  cout << res << endl;
+  if (q.empty()) {
+    cout << 0 << endl;
+  } else {
+    while (res % 10 == 0 && !q.empty()) {
+      res -= q.top();
+      q.pop();
+    }
+    cout << res << endl;
+  }
   return 0;
 }

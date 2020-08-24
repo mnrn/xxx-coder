@@ -22,27 +22,21 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  ll N;
-  cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
+  vec<vec<int>> c(3, vec<int>(3));
+  REP(i, 3) REP(j, 3) cin >> c[i][j];
 
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = -1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = 1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
+  for (int b1 = 0; b1 <= 100; b1++) {
+    for (int b2 = 0; b2 <= 100; b2++) {
+      for (int b3 = 0; b3 <= 100; b3++) {
+        if (c[0][0] - b1 == c[1][0] - b2 && c[1][0] - b2 == c[2][0] - b3 &&
+            c[0][1] - b1 == c[1][1] - b2 && c[1][1] - b2 == c[2][1] - b3 &&
+            c[0][2] - b1 == c[1][2] - b2 && c[1][2] - b2 == c[2][2] - b3) {
+          cout << "Yes" << endl;
+          return 0;
+        }
+      }
     }
   }
-  cout << res << endl;
+  cout << "No" << endl;
   return 0;
 }
