@@ -21,28 +21,34 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
-int main() {
-  ll N;
-  cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
+static constexpr ld expected(ld x) { return (x + 1.0) * x * 0.5 / x; }
 
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = 1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = -1;
+int main() {
+  ll N, K;
+  cin >> N >> K;
+  vec<ll> p(N), acc(N);
+  ll t = 0;
+  REP(i, N) {
+    cin >> p[i];
+    t += p[i];
+    if (i >= K) {
+      t -= p[i - K];
     }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
+    acc[i] = t;
+  }
+  ll vmax = 0, upper = 0;
+  for (ll i = 0; i < N; i++) {
+    if (acc[i] > vmax) {
+      vmax = acc[i];
+      upper = i;
     }
   }
-  cout << res << endl;
+  ld ans = 0;
+  for (ll i = upper - K + 1; i <= upper; i++) {
+    if (i >= 0 && i < N) {
+      ans += expected(p[i]);
+    }
+  }
+  cout << ans << endl;
   return 0;
 }

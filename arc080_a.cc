@@ -21,28 +21,28 @@ using ld = long double;
 template <typename T> using vec = std::vector<T>;
 using namespace std;
 
+static constexpr bool is_odd(ll n) { return n & 0x01 != 0; }
+static constexpr bool is_multiple_of_4(ll n) { return n % 4 == 0; }
+
 int main() {
   ll N;
   cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
-
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = 1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = -1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
+  ll odd = 0, multi4 = 0;
+  REP(i, N) {
+    ll a;
+    cin >> a;
+    if (is_odd(a)) {
+      odd++;
+    } else if (is_multiple_of_4(a)) {
+      multi4++;
     }
   }
-  cout << res << endl;
+  if (odd == 0) {
+    cout << "Yes" << endl;
+    return 0;
+  }
+  const ll multi2not4 = N - odd - multi4;
+  const ll not4chunk = odd + (multi2not4 > 0);
+  cout << (multi4 >= not4chunk - 1 ? "Yes" : "No") << endl;
   return 0;
 }

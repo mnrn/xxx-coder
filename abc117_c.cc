@@ -22,27 +22,17 @@ template <typename T> using vec = std::vector<T>;
 using namespace std;
 
 int main() {
-  ll N;
-  cin >> N;
-  vec<ll> A(N);
-  REP(i, N) cin >> A[i];
+  ll N, M;
+  cin >> N >> M;
+  vec<ll> X(M);
+  REP(i, M) cin >> X[i];
 
-  ll res = 1;
-  optional<int> global_grad;
-  FOR(i, 1, N) {
-    optional<int> local_grad;
-    if (A[i - 1] < A[i]) {
-      local_grad = 1;
-    } else if (A[i - 1] > A[i]) {
-      local_grad = -1;
-    }
-    if (!global_grad) {
-      global_grad = local_grad;
-    } else if (global_grad && local_grad && global_grad != local_grad) {
-      res++;
-      global_grad = nullopt;
-    }
-  }
+  sort(ALL(X));
+  vec<ll> interval(M - 1);
+  REP(i, M - 1) { interval[i] = X[i + 1] - X[i]; }
+  sort(ALL(interval));
+  ll res = 0;
+  REP(i, M - N) { res += interval[i]; }
   cout << res << endl;
   return 0;
 }
